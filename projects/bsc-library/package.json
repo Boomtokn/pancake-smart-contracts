@@ -1,7 +1,25 @@
 {
   "name": "bsc-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha tests --recursive",
+    "lint": "eslint . --ext .js,.ts",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "ethers": "^5.7.2",
+    "web3": "^4.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "mocha": "^10.2.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0"
+  }
 }
