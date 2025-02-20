@@ -1,101 +1,89 @@
 // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-pragma solidity >=0.4.0;
-
+/**
+ * @title IBEP20
+ * @dev Interface for BEP-20 token standard as defined by Binance Smart Chain.
+ */
 interface IBEP20 {
-  /**
-   * @dev Returns the amount of tokens in existence.
-   */
-  function totalSupply() external view returns (uint256);
+    /**
+     * @dev Returns the total supply of tokens.
+     */
+    function totalSupply() external view returns (uint256);
 
-  /**
-   * @dev Returns the token decimals.
-   */
-  function decimals() external view returns (uint8);
+    /**
+     * @dev Returns the token decimals.
+     */
+    function decimals() external view returns (uint8);
 
-  /**
-   * @dev Returns the token symbol.
-   */
-  function symbol() external view returns (string memory);
+    /**
+     * @dev Returns the token symbol.
+     */
+    function symbol() external view returns (string memory);
 
-  /**
-   * @dev Returns the token name.
-   */
-  function name() external view returns (string memory);
+    /**
+     * @dev Returns the token name.
+     */
+    function name() external view returns (string memory);
 
-  /**
-   * @dev Returns the bep token owner.
-   */
-  function getOwner() external view returns (address);
+    /**
+     * @dev Returns the address of the token owner (deployer).
+     */
+    function getOwner() external view returns (address);
 
-  /**
-   * @dev Returns the amount of tokens owned by `account`.
-   */
-  function balanceOf(address account) external view returns (uint256);
+    /**
+     * @dev Returns the balance of a given account.
+     * @param account The address of the account.
+     */
+    function balanceOf(address account) external view returns (uint256);
 
-  /**
-   * @dev Moves `amount` tokens from the caller's account to `recipient`.
-   *
-   * Returns a boolean value indicating whether the operation succeeded.
-   *
-   * Emits a {Transfer} event.
-   */
-  function transfer(address recipient, uint256 amount) external returns (bool);
+    /**
+     * @dev Transfers `amount` tokens to the specified `recipient`.
+     * @param recipient The address receiving the tokens.
+     * @param amount The number of tokens to transfer.
+     * @return A boolean indicating success.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transfer(address recipient, uint256 amount) external returns (bool);
 
-  /**
-   * @dev Returns the remaining number of tokens that `spender` will be
-   * allowed to spend on behalf of `owner` through {transferFrom}. This is
-   * zero by default.
-   *
-   * This value changes when {approve} or {transferFrom} are called.
-   */
-  function allowance(address _owner, address spender)
-    external
-    view
-    returns (uint256);
+    /**
+     * @dev Returns the remaining allowance for a `spender` on behalf of an `owner`.
+     * @param owner The address of the token owner.
+     * @param spender The address of the spender.
+     * @return The remaining number of tokens the spender is allowed to use.
+     */
+    function allowance(address owner, address spender) external view returns (uint256);
 
-  /**
-   * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
-   *
-   * Returns a boolean value indicating whether the operation succeeded.
-   *
-   * IMPORTANT: Beware that changing an allowance with this method brings the risk
-   * that someone may use both the old and the new allowance by unfortunate
-   * transaction ordering. One possible solution to mitigate this race
-   * condition is to first reduce the spender's allowance to 0 and set the
-   * desired value afterwards:
-   * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
-   *
-   * Emits an {Approval} event.
-   */
-  function approve(address spender, uint256 amount) external returns (bool);
+    /**
+     * @dev Approves `spender` to transfer `amount` tokens on behalf of the caller.
+     * @param spender The address allowed to transfer tokens.
+     * @param amount The number of tokens to approve.
+     * @return A boolean indicating success.
+     *
+     * Emits an {Approval} event.
+     */
+    function approve(address spender, uint256 amount) external returns (bool);
 
-  /**
-   * @dev Moves `amount` tokens from `sender` to `recipient` using the
-   * allowance mechanism. `amount` is then deducted from the caller's
-   * allowance.
-   *
-   * Returns a boolean value indicating whether the operation succeeded.
-   *
-   * Emits a {Transfer} event.
-   */
-  function transferFrom(
-    address sender,
-    address recipient,
-    uint256 amount
-  ) external returns (bool);
+    /**
+     * @dev Transfers `amount` tokens from `sender` to `recipient` using the allowance mechanism.
+     * The `amount` is then deducted from the caller's allowance.
+     * @param sender The address sending the tokens.
+     * @param recipient The address receiving the tokens.
+     * @param amount The number of tokens to transfer.
+     * @return A boolean indicating success.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 
-  /**
-   * @dev Emitted when `value` tokens are moved from one account (`from`) to
-   * another (`to`).
-   *
-   * Note that `value` may be zero.
-   */
-  event Transfer(address indexed from, address indexed to, uint256 value);
+    /**
+     * @dev Emitted when `value` tokens are moved from `from` to `to`.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 value);
 
-  /**
-   * @dev Emitted when the allowance of a `spender` for an `owner` is set by
-   * a call to {approve}. `value` is the new allowance.
-   */
-  event Approval(address indexed owner, address indexed spender, uint256 value);
+    /**
+     * @dev Emitted when an allowance of `spender` for an `owner` is set by {approve}.
+     */
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
