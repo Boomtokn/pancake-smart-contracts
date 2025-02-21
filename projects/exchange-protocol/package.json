@@ -1,8 +1,8 @@
 {
   "name": "exchange-protocol",
-  "description": "Exchange contracts from Uniswap v2, and new features (zaps)",
-  "version": "2.0.0",
-  "license": "GPL-3.0/MIT",
+  "description": "Exchange contracts from Uniswap v2, with additional features (zaps)",
+  "version": "2.0.1",
+  "license": "GPL-3.0 OR MIT",
   "private": true,
   "scripts": {
     "compile": "npx hardhat compile",
@@ -10,10 +10,18 @@
     "deploy:mainnet": "npx hardhat run --network mainnet scripts/deploy.ts",
     "test": "npx hardhat test",
     "test:coverage": "npx hardhat coverage",
-    "test:size-contracts": "npx hardhat size-contracts"
+    "test:size-contracts": "npx hardhat size-contracts",
+    "update:dependencies": "./update-dependencies.sh"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3",
+    "@uniswap/lib": "^4.0.1"
   },
   "devDependencies": {
-    "@openzeppelin/contracts": "^4.2.0",
-    "@uniswap/lib": "4.0.1-alpha"
+    "hardhat": "^2.17.3",
+    "solidity-coverage": "^0.8.0",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "dotenv": "^16.4.4"
   }
 }
