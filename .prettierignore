@@ -1,6 +1,34 @@
-# Global
+# Ignore all coverage reports
 projects/**/coverage/
 
-# Project
+# Ignore build artifacts
+artifacts/
+cache/
+
+# Ignore dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignore specific project directories
 projects/bsc-library/
 projects/exchange-protocol/
+
+# Ignore logs and debugging files
+logs/
+*.log
+debug.log
+
+# Ignore TypeScript and JavaScript build outputs
+dist/
+out/
+
+# Ignore Hardhat & Solidity config artifacts
+hardhat.config.ts
+hardhat.config.js
