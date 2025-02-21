@@ -1,5 +1,21 @@
-# These owners will be the default owners for everything in
-# the repo. Unless a later match takes precedence,
-# @global-owner1 and @global-owner2 will be requested for
-# review when someone opens a pull request.
+# These owners will be the default reviewers for all changes in the repository.
+# Unless a more specific rule applies, the following users will be requested for review.
+
 *       @chefpickle @ChefCupcake @Chef-Cheems
+
+# Specific ownership for directories and files
+
+# Contracts directory
+/contracts/   @chefpickle @ChefCupcake
+
+# Frontend directory
+/frontend/    @ChefCupcake @Chef-Cheems
+
+# Config files
+*.json       @chefpickle
+*.ts         @ChefCupcake
+*.sol        @chefpickle
+
+# Documentation
+/docs/       @Chef-Cheems
+README.md    @Chef-Cheems
